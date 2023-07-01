@@ -13,7 +13,7 @@ def kmeans(X, n_clusters, random_state=0, max_iter=300):
         centers = new_centers
     return labels, centers
 
-def postaize_image(image_path, n_colors):
+def postalize_image(image_path, n_colors):
     img = cv2.imread(image_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
