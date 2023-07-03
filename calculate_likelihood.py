@@ -5,10 +5,13 @@ def calculate_likelihood(routes, transitions, probabilities, observations):
         print(f"P {n+1}:", end=" ")
         for i in range(len(transition)):
             transition_probability *= probabilities[routes[transition[i]]][0] * probabilities[routes[transition[i]]][1 if observations[i] == 1 else 2]
-            print(f"{probabilities[routes[transition[i]]][0]} × {probabilities[routes[transition[i]]][1 if observations[i] == 1 else 2]}", end=" × ")
+            if i != len(transition) - 1:
+                print(f"{probabilities[routes[transition[i]]][0]} × {probabilities[routes[transition[i]]][1 if observations[i] == 1 else 2]}", end=" × ")
+            else:
+                print(f"{probabilities[routes[transition[i]]][0]} × {probabilities[routes[transition[i]]][1 if observations[i] == 1 else 2]}", end="")
         likelihood += transition_probability
-        print(f" = {transition_probability}")
-    print(f"P({observations} | M) = {likelihood}")
+        print(f" = {round(transition_probability, 5)}")
+    print(f"P({observations} | M) = {round(likelihood, 5)}")
 
     return likelihood
 
@@ -36,6 +39,7 @@ transitions = [
     ["q1->q3", "q3->q5", "q5->q5"],
 ]
 
+"""
 exampleDictionary = {
     0: [0.3, 0.7, 0.3],
     1: [0.5, 0.8, 0.2],
@@ -50,6 +54,7 @@ exampleDictionary = {
     10: [0.5, 0.4, 0.6],
     11: [1.0, 0.1, 0.9],
 }
+"""
 
 beatlesDictionary = {
     0: [0.3, 0.7, 0.3],
@@ -83,6 +88,12 @@ rollingstonesDictionary = {
 
 observations = [1, 0, 1]  # G-F-G
 
-calculate_likelihood(routes, transitions, exampleDictionary, observations)
-calculate_likelihood(routes, transitions, beatlesDictionary, observations)
-calculate_likelihood(routes, transitions, rollingstonesDictionary, observations)
+beatlesProb = calculate_likelihood(routes, transitions, beatlesDictionary, observations)
+rollingstonesProb = calculate_likelihood(routes, transitions, rollingstonesDictionary, observations)
+
+if beatlesProb > rollingstonesProb:
+    print("ビートルズの楽曲が妥当")
+elif rollingstonesProb > beatlesProb:
+    print("ローリングストーンズの楽曲が妥当")
+else:
+    print("どちらとも言えない")
