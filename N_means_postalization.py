@@ -32,12 +32,13 @@ def postalize_image(image_path, n_colors):
 
     # 画像のピクセルを1次元配列に変換
     pixels = img.reshape(-1, 3)
+    print(pixels)
 
-    # k-means法でクラスタリングを行う
+    # k-means法でクラスタリングを実行
     labels, centers = kmeans(pixels, n_clusters=n_colors, random_state=0)
 
     # 各ピクセルを最も近いクラスタ中心の色に置き換える
-    new_pixels = centers[labels].astype(int)
+    new_pixels = centers[labels].astype(np.uint8)
     new_img = new_pixels.reshape(img.shape)
 
     # 画像を表示する
