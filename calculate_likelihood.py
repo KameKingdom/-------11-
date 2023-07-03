@@ -83,3 +83,4 @@ exampleDictionary = {
 observations = [1, 0, 1]  # G-F-G
 
 calculate_likelihood(routes, transitions, exampleDictionary, observations)
+calculate_likelihood(routes, transitions, exampleDictionary, observations)
