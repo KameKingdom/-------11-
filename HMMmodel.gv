@@ -1,0 +1,29 @@
+digraph RollingStones {
+    // レイアウトの指定
+    rankdir=LR;
+
+    // ノードの定義
+    A [label="q1"];
+    B [label="q2"];
+    C [label="q3"];
+    D [label="q4"];
+    E [label="q5"];
+
+    // エッジの定義
+    A -> A;
+    A -> B;
+    A -> C;
+
+    B -> B;
+    B -> C;
+    B -> D;
+
+    C -> C;
+    C -> D;
+    C -> E;
+
+    D -> D;
+    D -> E;
+
+    E -> E;
+}
