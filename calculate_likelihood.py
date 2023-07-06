@@ -91,8 +91,6 @@ def generate_combinations(characters, max_length):
             combinations.append(''.join(item))
     return combinations
 
-
-
 if __name__ == "__main__":
     #sequential_progression = input("input sequential progression >> ")
     start_node = "1"
@@ -114,9 +112,10 @@ if __name__ == "__main__":
         writer = csv.writer(csvfile)
 
         # Write header
-        writer.writerow(['文字列', '結果', 'beatlesの確率', 'rolling stonesの確率'])
+        writer.writerow(['文字列', 'beatlesの確率', 'rolling stonesの確率', '結果'])
 
         for combination in combinations:
+            print(combination)
             sequential_progression = combination
             steps = len(sequential_progression)
             
@@ -136,4 +135,4 @@ if __name__ == "__main__":
                 result = "both"
 
             # Write to CSV file
-            writer.writerow([sequential_progression, result, beatlesProb, rollingstonesProb])
+            writer.writerow([sequential_progression, beatlesProb, rollingstonesProb, result])
