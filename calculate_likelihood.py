@@ -45,6 +45,7 @@ routes = {
     "5->5": 11,
 }
 
+# [ループ, f, g]
 beatlesDictionary = {
     0: [0.3, 0.7, 0.3],
     1: [0.5, 0.8, 0.2],
@@ -90,6 +91,7 @@ def generate_combinations(characters, max_length):
         for item in product(characters, repeat=length):
             combinations.append(''.join(item))
     return combinations
+
 
 if __name__ == "__main__":
     #sequential_progression = input("input sequential progression >> ")
